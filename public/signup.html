@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/datepicker3.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/js/lumino.glyphs.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.6/jszip.js"></script>
+
+</head>
+
+<body >
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group">
+                <h2>SIGN UP</h2><br>
+            </div>
+            <div class="form-group">
+                <label for="namefirstname">First Name</label>
+                <input type="text" class="form-control" id="namefirstname" placeholder="Enter First Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="namelastname">Last Name</label>
+                <input type="text" class="form-control" id="namelastname" placeholder="Enter Last Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter Username" required>
+            </div>
+
+           <!-- <div class="form-group">
+                <label for="position">Positon</label>
+                <input type="text" class="form-control" id="position" placeholder="Enter Position">
+            </div>-->
+            <fieldset class="form-group">
+            <label for="position">Position</label>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="position" id="optionsRadios1" value="Doctor" checked>
+                    Doctor
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="position" id="optionsRadios2" value="Chief Pharmacyst">
+                    Chief Phamacyst
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="position" id="optionsRadios3" value="assistance phamacyst" >
+                    Assistance Phamacyst
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="position" id="optionsRadios4" value="phamacyst" >
+                   Phamacyst
+                </label>
+            </div>
+            </fieldset>
+
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" data-error="Bruh, That email address is invalid" required>
+                <div class="help-block with-errors"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="contactno">Contact number</label>
+                <input type="text" class="form-control" id="contactno" placeholder="Enter Contact number" pattern="[789][0-9]{9}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="form-inline row">
+                    <div class="form-group col-sm-6">
+                        <input type="password" data-minlength="6" class="form-control" id="password" placeholder="Password" required>
+                        <div class="help-block">Minimum of 6 characters</div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+
+            </form>
+
+
+    </div>
+        </div>
+
+<script>
+    $('#submitButton').click(function (event) {
+        console.log("Submit clicked")
+        event.preventDefault();
+        console.log("Button clicked");
+        var firstName=$('#namefirstname').val();
+        var lastName=$('#namelastname').val();
+        var userName=$('#username').val();
+        var position= $('input[name="position"]:checked').val();
+
+        var email = $('#email').val();
+        var contactno = $('#contactno').val();
+        var password = $('#password').val();
+//        console.log(position+"     --------------------------");
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/sign-up",
+            data: JSON.stringify({firstName:firstName,lastName:lastName,userName:userName,position:position, email: email, contactno:contactno,password: password}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                window.location.replace("login.html");
+                $('#error-message').addClass('hide');
+            },
+            error: function (error) {
+                console.log(error);
+                $('#error-message').removeClass('hide');
+            }
+        })
+    })
+</script>
+
+</body>
+
+</html>

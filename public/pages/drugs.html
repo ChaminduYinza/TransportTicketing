@@ -1,0 +1,218 @@
+
+		<style type="text/css">
+			.files input {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 35%;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
+}
+.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+ }
+.files{ position:relative}
+.files:after {  pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.color input{ background-color:#f1f1f1;}
+.files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: #2ea591;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+		</style>
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active"> Drugs</li>
+			</ol>
+		</div><!--/.row-->
+		
+	<!-- 	<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Drugs</h1>
+			</div>
+		</div> --><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+				  <div class="panel-heading">Add Drugs</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper"  ng-controller="importCtrl">
+							
+					    <!--   <form method="post"  id="uploadfile"  ng-controller="importCtrl"> -->
+				                       
+				              <div class="form-group files">
+				                <label>Upload Your Excel File </label>
+				                <input type="file" class="form-control" multiple onchange="angular.element(this).scope().loadFile(this.files)" ng-model="checkFile">
+				              </div>   
+				                <!-- <pre ng-show="excel">{{excel | json}}</pre> -->
+                    <input type="button" value="Import data" class="btn btn-success"  
+                   ng-click="handleFile()"  ng-disabled="!checkFile"/>  
+				              	 <!-- <button type="submit" class="btn btn-success" ng-click="handleFile()">Submit</button> -->
+
+				          <!-- </form>	 -->
+				          <div ng-show="alert===true" class="alert alert-success inner" role="alert" style="margin-top:10px">
+						    <button type="button" class="btn btn-success"  ng-click="alert=false"><span aria-hidden="true">&times;
+						    </span><span class="sr-only">Close</span></button>
+						    <strong>Well done!</strong> Successfully  data has been imported !
+						</div>
+						<div ng-show="alert===false" class="alert alert-danger inner" role="alert" style="margin-top:10px">
+						    <button type="button" class="btn btn-danger"  ng-click="alert=false"><span aria-hidden="true">&times;
+						    </span><span class="sr-only">Close</span></button>
+						    <strong>Error!</strong> Some thing if wrong!
+						</div>
+				        <!--   <p class="alert alert-success" role="alert" ng-bind="msg">
+				          	
+				          </p>
+				          <p class="alert alert-danger" role="alert" ng-bind="msgerr"> </p> -->
+				         <!--  <p ng-bind="msg"></p>   -->
+         				</div>
+      				</div>
+         	 </div>
+     	 </div>
+
+
+<div class="col-lg-12">
+<div class="panel panel-default">      	      
+	  <div class="panel-heading">Add Drugs Manualy</div>
+<div class="panel-body">
+ 	<!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+	  <form class="form-horizontal" ng-submit="addDrug()">
+  	    <div class="form-group">
+	      <label class="control-label col-sm-2">Drug Id:</label>
+	      <div class="col-md-4">
+	        <input type="text" class="form-control" id="dName"   name="dName" ng-model="formData.drugName" disabled>
+	      </div>
+	    </div>
+	    <div class="form-group">
+
+	      <label class="control-label col-sm-2">Drug Category:</label>
+	      <div class="col-md-6">
+	          <select id="selectdrug"   class="form-control"  ng-model="formData.drugCategory" required data-error="Select a Product!" tabindex="1">
+	           <option style="display:none" value="">Select a Drug Category</option>
+						<option value="Narcotics">Narcotics</option>
+						<option value="Drugs used in the treatment of injections">Drugs used in the treatment of injections</option>
+						<option value="Drugs used in the treatment of Cardiovascular system">Drugs used in the treatment of Cardiovascular system</option>
+						<option value="Drugs acting on the central nervous system">Drugs acting on the central nervous system</option>
+						<option value="Drugs affecting nutrition &amp; blood">Drugs affecting nutrition &amp; blood</option>
+						<option value="Drugs used in the treatment of diseases of the respiratory system">Drugs used in the treatment of diseases of the respiratory system</option>
+						<option value="Immunological product and vaccines">Immunological product and vaccines</option><option value="Drugs used in the treatment of the endocrine system">Drugs used in the treatment of the endocrine system</option>
+						<option value="Drugs acting on the gastrointestinal system">Drugs acting on the gastrointestinal system</option>
+						<option value="Drugs acting on eye">Drugs acting on eye</option>
+	          
+			  </select>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Drug Name:</label>
+	      <div class="col-md-4">
+	        <input type="text" class="form-control" id="dName"   name="dName" ng-model="formData.drugName" required>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Drug Type:</label>
+	      <div class="col-md-4">
+	          <select class="form-control" id="dType" ng-model="formData.drugType" required data-error="Select a Product!" tabindex="1">
+	          	 <option style="display:none" value="">Select a Drug type</option>
+				<option value="AMP">AMP</option>
+	            <option value="Tablet">Tablet</option>
+	            <option value="Capsule">Capsule</option>
+	            <option value="Spray">Spray</option>
+	            <option value="Liquid">Liquid</option>
+	            <option value="Drop">Drop</option>
+			  </select>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Drug Price:</label>
+	      <div class="col-md-4">
+	        <input type="text" class="form-control" id="dPrice"   name="dPrice" ng-model="formData.drugPrice" required pattern="\d*" title="Numbers only">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Remarks:</label>
+	      <div class="col-md-4">
+	        <input type="text" class="form-control" id="dRemarks"   name="dRemarks" ng-model="formData.remarks" >
+	      </div>
+	    </div>	
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Danger Level:</label>
+	      <div class="col-md-4">
+	        <input type="text" class="form-control" id="dDangerLevel"   name="dDangerLevel" ng-model="formData.dangerLevel" required pattern="\d*" >
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Reorder Level:</label>
+	      <div class="col-md-4">
+	        <input type="text" class="form-control" id="dReorderLevel"   name="dReorderLevel" ng-model="formData.reorderLevel" required pattern="\d*" >
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Dosage</label>
+	      <div class="col-md-4" required pattern="\d*" >
+	        <input type="text" class="form-control" id="dDosage"   name="dDosage" ng-model="formData.dosage">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Frequency</label>
+	      <div class="col-md-4" required>
+	        <input type="text" class="form-control" id="dDosage"   name="dDosage" ng-model="formData.frequency">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	    <input type="hidden" id="DATE" name="DATE"  ng-model="formData.addedDate">
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-md-4">
+	        <button type="submit" class="btn btn-success"  >Add Drug</button>
+	      </div>
+	    </div>
+	    <div class="form-group">
+    	<div class="col-sm-offset-2 col-md-8">
+	<!--      	 <div ng-show="alertSubmit===true" class="alert alert-success inner" role="alert" style="margin-top:10px">
+		    <button type="button" class="btn btn-success"  ng-click="alertSubmit=false"><span aria-hidden="true">&times;
+		    </span><span class="sr-only">Close</span></button>
+		    <strong>Well done!</strong> Successfully  data has been inserted !
+			</div> -->
+	    	<div ng-show="alertSubmit===true" class="alert bg-success" role="alert">
+					<svg class="glyph stroked checkmark"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-checkmark"></use></svg> <strong>Well done!</strong> Successfully  data has been inserted ! <a href="" class="pull-right" ng-click="alertSubmit=false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&times;</a>
+				</div>
+	    	</div>
+			    </div>
+			  </form>
+	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+	</div>	<!--/.main-->

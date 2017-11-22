@@ -1,0 +1,107 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <svg class="glyph stroked home">
+                        <use xlink:href="#stroked-home"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="active">Dispense Drugs</li>
+        </ol>
+    </div>
+    <style type="text/css">
+        tr.row-name {
+            font-size: 15px;
+            color: #448aff;
+            text-transform: uppercase;
+        }
+    </style>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dispense Drugs</div>
+                <div class="panel-body">
+                <label class="">Search By Prescription ID: <input class="form-control input-sm" ng-model="search.PrescriptionID"></label> 
+                    <label class="" style="float: right;">Search By Prescription Name: <input class="form-control input-sm" ng-model="search.PatientName"></label>
+                    <table data-toggle="table" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr class="row-name" style="font-size: 12px; text-align: center;">
+                                <th>Prescription ID</th>
+                                <th>Patient Name</th>
+                                <th>Doctor's Name</th>
+                                <th>Age</th>
+                                <th>Description</th>
+                                <th>Prescription Date</th>
+                                <th>Created Date</th>
+                                <th>Status</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="press in Pres | filter: {PrescriptionID: search.PrescriptionID, PatientName: search.PatientName}">
+                                <td>{{press.PrescriptionID}}</td>
+                                <td>{{press.PatientName}}</td>
+                                <td>{{press.DoctorName}}</td>
+                                <td>{{press.Age}}</td>
+                                <td>{{press.Reason}}</td>
+                                <td>{{press.PrescriptionDate}}</td>
+                                <td>{{press.CreatedDate}}</td>
+                                <td><span class="label label-warning">{{press.PrescriptionStatus}}</span></td>
+                                <td style="text-align: center;" class="col-md-2">
+                                <a class="btn btn-primary btn-xs" ng-model="view"  ng-click="Show(); viewPrescription(press); passData(press)">View</a>
+                                <a class="btn btn-danger btn-xs" ng-model="delete"  ng-click="removePrescription(press)">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="added" ng-show="IsVisible">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Added Drugs</div>
+
+                <div class="panel-body">
+                    <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+                    <table data-toggle="table" class="table table-bordered table-striped table-hover">
+                        <thead >
+                           <tr class="row-name">
+                              <th>Dispense ID</th>
+                              <th>Prescription ID</th>
+                              <th>Drug Name</th>
+                              <th>Quantity</th>
+                              <th>Dosage</th>
+                              <th>Schedule</th>
+                              <th>Edit</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr ng-repeat="D in Drugs">
+                              <td>{{D.DispenseDrugID}}</td>
+                              <td>{{D.PrescriptionID}}</td>  
+                              <td>{{D.DrugName}}</td>
+                              <td>{{D.Quantity}}</td>
+                              <td>{{D.Dosage}}</td>
+                              <td>{{D.Schedule}}</td>
+                                <td style="text-align: center" class="col-md-2"><a class="btn btn-success btn-xs" ng-model="save" ng-show="save" ng-click="save=false">Save</a>
+                                    <a class="btn btn-warning btn-xs" ng-model="edit" ng-hide="save" ng-click="save=true">Edit</a>
+                                    <a class="btn btn-warning btn-xs" ng-model="cancel" ng-show="save" ng-click="save=false">Cancel</a>
+                                    <a class="btn btn-danger btn-xs" ng-model="delete" ng-click="removePressPlacedDrug(D)" ng-show="save">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-group col-md-1" style="float: right">
+                        <br>
+                        <button name="nextbtn" style="float: right" ng-model="prescription" ng-click="Hide(); dispenseAndUpdateStatus()" class="btn btn-success">Dispense</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

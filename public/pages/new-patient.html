@@ -1,0 +1,109 @@
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <svg class="glyph stroked home">
+                        <use xlink:href="#stroked-home"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="active"> Batch</li>
+        </ol>
+    </div>
+    <!--/.row-->
+    <!-- 	<div class="row">
+       <div class="col-lg-12">
+           <h1 class="page-header">Drugs</h1>
+       </div>
+       </div> --><!--/.row-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add New Patient</div>
+                <div class="panel-body">
+                    <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+                    <form class="form-horizontal" ng-submit="addPatient()">
+                        <div class="form-group">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Name:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="name"   name="name" ng-model="formData.name" maxlength="30" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Age:</label>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" id="age"   name="age" ng-model="formData.age" maxlength="2" min="3"max="90" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Date Of Birth:</label>
+                                <div class="col-md-4">
+                                    <input type="date" class="form-control" id="dateOfBirth"   name="dateOfBirth" ng-model="formData.dateOfBirth" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="address"   name="address" ng-model="formData.address" maxlength="30" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Contact Number:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="contactNumber"   name="contactNumber" ng-model="formData.contactNumber" pattern="[789][0-9]{9}"  required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Prescription Details:</label>
+                                <div class="col-md-4">
+                                    <textarea rows="4" cols="50" type="text" class="form-control" id="prescriptionDetails"   name="prescriptionDetails" ng-model="formData.prescriptionDetails">
+
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Checked By:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="checkedBy"   name="checkedBy" ng-model="formData.checkedBy" required >
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Date:</label>
+                            <p id="demo"></p>
+
+                            <script>
+                                var d = new Date();
+                                document.getElementById("demo").innerHTML = d.toDateString();
+                            </script>
+                        </div>
+
+                        <input type="submit" value="Submit" class="btn btn-success">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-md-8">
+                                <!--      	 <div ng-show="alertSubmit===true" class="alert alert-success inner" role="alert" style="margin-top:10px">
+                                   <button type="button" class="btn btn-success"  ng-click="alertSubmit=false"><span aria-hidden="true">&times;
+                                   </span><span class="sr-only">Close</span></button>
+                                   <strong>Well done!</strong> Successfully  data has been inserted !
+                                   </div> -->
+                                <div ng-show="alertSubmit===true" class="alert bg-success" role="alert">
+                                    <svg class="glyph stroked checkmark">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-checkmark"></use>
+                                    </svg>
+                                    <strong>Well done!</strong> Successfully  data has been inserted ! <a href="" class="pull-right" ng-click="alertSubmit=false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&times;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/.row-->
+</div>	<!--/.main-->

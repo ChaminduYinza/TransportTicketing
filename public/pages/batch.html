@@ -1,0 +1,207 @@
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" >
+   <div class="row">
+      <ol class="breadcrumb">
+         <li>
+            <a href="#">
+               <svg class="glyph stroked home">
+                  <use xlink:href="#stroked-home"></use>
+               </svg>
+            </a>
+         </li>
+         <li class="active"> Batch</li>
+      </ol>
+   </div>
+   <!--/.row-->
+   <!-- 	<div class="row">
+      <div class="col-lg-12">
+      	<h1 class="page-header">Drugs</h1>
+      </div>
+      </div> --><!--/.row-->
+   <div ng-controller="batchController" class="row">
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div class="panel-heading">Add New Batch</div>
+            <div class="panel-body">
+               <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+               <form class="form-horizontal">
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Drug Category:</label>
+                     <div class="col-md-6">
+                        <select  ng-change="secondGET()"  class="form-control" required data-error="Select a Product!" tabindex="1" ng-options="category.drugCategory as category.drugCategory for category in myDrugCategory" ng-model="thisMode.cat" name="drugCat">
+
+
+<!-- ng-options="category.drugCategory as category.drugCategory for category in myDrugCategory"  -->
+
+
+                           <option style="display:none" value="" >Select a Drug Category</option>
+                           <!-- <option ng-model="batchData.drugCategory"  ng-repeat="X in myDrugCategory">{{X.drugCategory}} </option> -->
+                          
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Drug Name:</label>
+                     <div class="col-md-6">
+                        <select ng-change="drugpriceGET()"   class="form-control" name="drugName"  required data-error="Select a Product!" tabindex="1" ng-options="x.drugName as x.drugName for x in batchData" ng-model="thisMode.Dname" >
+                        <option style="display:none" value="" >Select a Drug Name</option>
+                        <!-- <option ng-repeat="X in batchData" ng-model="thisMode.name" >{{X.drugName}}</option> -->
+                         <!--   <option style="display:none" value="" ng-model="batchData.drugName">Select a Drug Name</option> -->
+                          
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Batch Number:</label>
+                     <div class="col-md-4">
+                        <input type="text" class="form-control" id="bNumber"   data-ng-model="thisMode.batchNumber"  disabled>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Type:</label>
+                     <div class="col-md-4">
+                        <select ng-model="drugType" class="form-control"   data-error="Select a Product!" tabindex="1" name="Type" ng-options="x.Dtype as x.Dtype for x in pressDType">
+                           <option style="display:none" value="">Select a Drug type</option>
+                           <!-- <option value="Cartoons" ng-model="drugType">Cartoons</option>
+                           <option value="Bottles" ng-model="drugType">Bottles</option> -->
+                        </select>
+                     </div>
+                  </div>
+                  <div ng-show="drugType=='Cartoons' || drugType=='Bottles'" class="form-group">
+                     <label class="control-label col-sm-3">Content:</label>
+                     <div class="col-md-4" >
+                        <select ng-model="drugContent" class="form-control" name="content"    data-error="Select a Product!" tabindex="1"  >
+                           <option style="display:none" value="">Select a Drug type</option>
+                           <option value="Tablets">Tablets</option>
+                           <option value="Liquid">Liquid</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div ng-show="drugContent == 'Tablets'" class="form-group">
+                     <label class="control-label col-sm-3">Content Type:</label>
+                     <div class="col-md-4">
+                        <select ng-model="drugContentTab" class="form-control" name="contenttype"  data-error="Select a Product!" tabindex="1">
+                           <option style="display:none" value="">Select a Drug type</option>
+                           <option value="Bottles">Bottles</option>
+                           <option value="Cards">Cards</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Drug Price:</label>
+                     <div class="col-md-4">
+                        <input type="text"  class="form-control"  
+                         min="0"   pattern="\d*" title="Numbers only"  data-ng-model="priceData.drugPrice" disabled="">
+                         
+                     </div>
+                  </div>
+                  <div ng-show="drugContent == 'Liquid' || drugContentTab == 'Bottles' || drugContentTab == 'Cards'" class="form-group">
+                     <label class="control-label col-sm-3">Number of cartoons:</label>
+                     <div class="col-md-4">
+                        <input type="number" class="form-control" id="dDangerLevel"  min="0"   ng-model="qty.cartoon" required pattern="\d*" name="cartoon">
+                     </div>
+                  </div>
+                  <div ng-show="drugContent == 'Liquid' || drugContentTab == 'Bottles'" class="form-group">
+                     <label class="control-label col-sm-3">Number of bottles per cartoons:</label>
+                     <div class="col-md-4">
+                        <input type="number" class="form-control"  min="0"    ng-model="qty.bottle"  pattern="\d*"  name="numberofbottles" >
+                     </div>
+                  </div>
+                  <div ng-show="drugContentTab == 'Cards'" class="form-group">
+                     <label class="control-label col-sm-3">Number of cards per cartoons:</label>
+                     <div class="col-md-4">
+                        <input type="number" class="form-control"  min="0"    pattern="\d*" ng-model="qty.card" name="numofcards">
+                     </div>
+                  </div>
+                  <div ng-show="drugContentTab == 'Cards'" class="form-group">
+                     <label class="control-label col-sm-3">Number of Tablets per Card</label>
+                     <div class="col-md-4">
+                        <input type="number" class="form-control"  min="0"    ng-model="qty.tablet"  pattern="\d*" >
+                     </div>
+                  </div>
+                  <div ng-show="drugContentTab == 'Bottles'" class="form-group">
+                     <label class="control-label col-sm-3">Number of Tablets per Bottle</label>
+                     <div class="col-md-4">
+                        <input type="number" class="form-control"  min="0"   ng-model="qty.tabPerBottle"  pattern="\d*" name="numoftab" >
+                     </div>
+                  </div>
+                <div class="form-group">
+                     <label class="control-label col-sm-3"></label>
+                     <div class="col-md-4">
+
+                        <input ng-show="drugContent == 'Liquid' &&  drugType == 'Bottles' "  type="button" class="btn btn-primary btn-sm"   ng-model="qty.tabPerBottle"   ng-click="calcLiquid()" value="Calculate">
+                        <input ng-show="drugContent == 'Liquid' &&  drugType == 'Cartoons' "  type="button" class="btn btn-primary btn-sm"   ng-model="qty.tabPerBottle"   ng-click="calcBottleLiqud()" value="Calculate ">
+                        <input ng-show="drugContentTab == 'Bottles' && drugType=='Cartoons'" type="button" class="btn btn-primary btn-sm"   ng-model="qty.tabPerBottle"   ng-click="calcBottles()" value="Calculate  ">
+                        <input ng-show="drugContentTab == 'Cards' && drugContent == 'Tablets' && drugType == 'Bottles'" type="button" class="btn btn-primary btn-sm"   ng-model="qty.tabPerBottle"   ng-click="calcCard()" value="Calculate">
+                         <input ng-show="drugContentTab == 'Cards' && drugContent == 'Tablets' && drugType == 'Cartoons'" type="button" class="btn btn-primary btn-sm"   ng-model="qty.tabPerBottle"   ng-click="calcCartoonTab()" value="Calculate">                       
+
+                     </div>
+                </div>
+
+
+                  <!-- * qty.tabPerBottle * qty.tablet * qty.card -->
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Quantity:</label>
+
+                     <div ng-show="drugContentTab == 'Cards'" class="col-md-4">
+
+                     
+
+                        <input type="number" class="form-control"    title="Numbers only"  value="{{totalQty}}" disabled>
+                        <input type="hidden" class="form-control"    title="Numbers only"    data-ng-model="totalQty">
+                     </div>                     
+                      <div ng-show="drugContentTab == 'Bottles'" class="col-md-4">
+
+                        <input type="number" class="form-control"    title="Numbers only"  value="{{totalQty}}" disabled>
+                        <input type="hidden" class="form-control"   data-ng-model="totalQty">
+                     </div>
+                     <div ng-show="drugContent == 'Liquid' " class="col-md-4">
+                        <input type="number" class="form-control"   title="Numbers only"  value="{{totalQty}}" disabled >
+                     <input type="hidden" class="form-control"   title="Numbers only"     data-ng-model="totalQty">
+                     
+                     </div>
+                  </div>
+                 
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Manufacure Date:</label>
+                     <div class="col-md-4" required>
+                        <input type="date" class="form-control"  ng-model="thisMode.manufacturerDate" name="mDate" >
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-3">Expire Date:</label>
+                     <div class="col-md-4" required>
+                        <input type="date" class="form-control" ng-model="thisMode.exprieDate" name="eDate">
+                     </div>
+                  </div>
+<!--                   <div class="form-group">
+                     <input type="hidden" id="DATE" name="DATE"  ng-model="batchAddData.addedDate">
+                  </div> -->
+                  <div class="form-group">
+                     <div class="col-sm-offset-2 col-md-4">
+                        <button type="submit" class="btn btn-success"  ng-click="addBatch()" >Add Batch</button>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-sm-offset-2 col-md-8">
+                        <!--      	 <div ng-show="alertSubmit===true" class="alert alert-success inner" role="alert" style="margin-top:10px">
+                           <button type="button" class="btn btn-success"  ng-click="alertSubmit=false"><span aria-hidden="true">&times;
+                           </span><span class="sr-only">Close</span></button>
+                           <strong>Well done!</strong> Successfully  data has been inserted !
+                           </div> -->
+                        <div ng-show="alertSubmit===true" class="alert bg-success" role="alert">
+                           <svg class="glyph stroked checkmark">
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-checkmark"></use>
+                           </svg>
+                           <strong>Well done!</strong> Successfully  data has been inserted ! <a href="" class="pull-right" ng-click="alertSubmit=false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&times;</a>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--/.row-->
+</div>	<!--/.main-->

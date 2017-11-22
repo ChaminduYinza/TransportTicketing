@@ -1,0 +1,70 @@
+<script src="./js/jspdf.js"></script>
+<script src="./js/pdfFromHTML.js"></script>
+<script src="./js/html2canvas.js"></script>
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" >
+   <div class="row">
+      <ol class="breadcrumb">
+         <li>
+            <a href="#">
+               <svg class="glyph stroked home">
+                  <use xlink:href="#stroked-home"></use>
+               </svg>
+            </a>
+         </li>
+         <li class="active">EXPIRED STOCK</li>
+      </ol>
+   </div>
+   <style type="text/css">
+      tr.row-name
+      {
+      font-size: 15px;
+      color:#448aff;
+      text-transform: uppercase;
+      }
+   </style>
+   <div ng-controller="expiredStockController" class="row" >
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div class="panel-heading">Expired Stock Details</div>
+            <div   class="panel-body">
+               Search : <input type="text" ng-model="searchBox"> 
+               <p> </p>
+               <br>
+               <div ng-show="alert===true" class="alert alert-success inner" role="alert" style="margin-top:10px">
+                  <button type="button" class="btn btn-success"  ng-click="alert=false"><span aria-hidden="true">&times;
+                  </span><span class="sr-only">Close</span></button>
+                  Successfully removed from database
+               </div>
+               <table id="HTMLtoPDF"  data-toggle="table" class="table table-bordered table-striped table-hover" >
+                  <thead>
+                     <tr class="row-name">
+                        <th>Drug Name</th>
+                        <th>Unit Type</th>
+                        <th>Drug Category</th>
+                        <th>Drug Price</th>
+                        <th>Drug Quantity</th>
+                        <th>Drug Expire Date</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="X in expiredStockTable | filter:searchBox">
+                        <td>{{X.drugName}}</td>
+                        <td>{{X.drugType}}</td>
+                        <td>{{X.drugCategory}}</td>
+                        <td>{{X.drugPrice}}</td>
+                        <td>{{X.drugQuantity}}</td>
+                        <td>{{X.expDate}}</td>
+                        <td> 
+                           <button  ng-click="deleteFromDB(X)"" type="submit" name="default"  class="btn btn-danger btn-xs" value="15">Delete </button>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <button  id="pdfConverter" onclick="HTMLtoExpPDF()" style=" margin-left: 16px" type="button" class="btn btn-success btn-md" value="VIEW AS PDF"> VIEW AS PDF</button>
+   </div>
+</div>
+<!--/.row-->
+</div>	<!--/.main-->

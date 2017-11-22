@@ -1,0 +1,107 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <svg class="glyph stroked home">
+                        <use xlink:href="#stroked-home"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="active">Register Doctor</li>
+        </ol>
+    </div>
+    <style type="text/css">
+        tr.row-name {
+            font-size: 15px;
+            color: #448aff;
+            text-transform: uppercase;
+        }
+    </style>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Register Doctor</div>
+
+                <div class="panel-body">
+                    <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+                    <form class="form-horizontal" name="RegDoctor">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Doctor ID : </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="docid" name="docId" disabled="true" value="DoctorID" ng-model="Doctor.DoctorID">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Doctor's Name :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="docName" name="docName" placeholder="Enter Doctor's Name" ng-model="Doctor.DoctorName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Specialization :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="docSpec" name="docSpec" placeholder="Enter Specialization" ng-model="Doctor.Specialization" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Hospital :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="docHospital" name="docHospital" placeholder="Enter Hospital" ng-model="Doctor.Hospital" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Contact Number :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="docContact" name="docContact" placeholder="Enter Contact Number" ng-model="Doctor.Contact" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="col-md-4">
+                                <button name="save" ng-click="addDoctor(Doctor)" ng-disabled="RegPatient.$invalid" ng-model="alertSubmit" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registered Doctors</div>
+                <div class="panel-body">
+                    <table data-toggle="table" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr class="row-name">
+                                <th>Doctor ID</th>
+                                <th>Doctor Name</th>
+                                <th>Specialization</th>
+                                <th>Hospital</th>
+                                <th>Contact Number</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="Doc in Doctors">
+                                <td ng-model="Doc.DoctorID">{{Doc.DoctorID}}</td>
+                                <td ng-model="Doc.DoctorName">{{Doc.DoctorName}}</td>
+                                <td ng-model="Doc.Specialization">{{Doc.Specialization}}</td>
+                                <td ng-model="Doc.Hospital">{{Doc.Hospital}}</td>
+                                <td ng-model="Doc.Contact">{{Doc.Contact}}</td>
+                                <td style="text-align: center" class="col-md-2"><a class="btn btn-success btn-xs" ng-model="save" ng-show="save" ng-click="save=false; updateDoctor(Doc)">Save</a>
+                                    <a class="btn btn-warning btn-xs" ng-model="edit" ng-hide="save" ng-click="save=true">Edit</a>
+                                    <a class="btn btn-warning btn-xs" ng-model="cancel" ng-show="save" ng-click="save=false">Cancel</a>
+                                    <a class="btn btn-danger btn-xs" ng-model="delete" ng-click="delete=true; removeDoctor(Doc)" ng-show="save">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+

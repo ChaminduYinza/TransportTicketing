@@ -1,0 +1,61 @@
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" >
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active"> PATIENTS</li>
+        </ol>
+
+    </div><!--/.row-->
+
+
+    <style type="text/css">
+        tr.row-name
+        {
+            font-size: 15px;
+            color:#448aff;
+            text-transform: uppercase;
+        }
+    </style>
+    <div ng-controller="patientController-1" class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Patient Details</div>
+
+                <div class="panel-body">
+                    <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+                    <table data-toggle="table" class="table table-bordered table-striped table-hover" >
+                        <thead>
+                        <tr class="row-name">
+                            <th> Name</th>
+                            <th>Age</th>
+                            <th>Date Of Birth</th>
+                            <th>Address</th>
+                            <th>Contact Number</th>
+                            <th>Prescription Details</th>
+                            <th>Checked By</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="X in patientTable">
+                            <td>{{X.name}}</td>
+                            <td>{{X.age}}</td>
+                            <td>{{X.dateOfBirth}}</td>
+                            <td>{{X.address}}</td>
+                            <td>{{X.contactNumber}}</td>
+                            <td>{{X.prescriptionDetails}}</td>
+                            <td>{{X.checkedBy}}</td>
+                            <td>{{X.date}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/.row-->
+</div>	<!--/.main-->

@@ -1,0 +1,106 @@
+<script src="./js/jspdf.js"></script>
+<script src="./js/pdfFromHTML.js"></script>
+<script src="./js/html2canvas.js"></script>
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" >
+   <div class="row">
+      <ol class="breadcrumb">
+         <li>
+            <a href="#">
+               <svg class="glyph stroked home">
+                  <use xlink:href="#stroked-home"></use>
+               </svg>
+            </a>
+         </li>
+         <li class="active"> STOCK</li>
+      </ol>
+   </div>
+   <style type="text/css">
+      tr.row-name
+      {
+      font-size: 15px;
+      color:#448aff;
+      text-transform: uppercase;
+      }
+   </style>
+   <div ng-controller="stockController" class="row" >
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div  ng-show="!isMailClicked" class="panel-heading">Stock Details</div>
+            <div  ng-show="isMailClicked" class="panel-heading">Send Stock Mail Order</div>
+            <div  ng-show="!isMailClicked" class="panel-body"><span style="color:red;margin-left:10px;">Less than Danger Level</span><span style="color:orange;margin-left:10px;">Less than ReOrder Level</span>
+               <br><br>
+               Search : <input type="text" ng-model="searchBox"> 
+            </div>
+            <div  ng-show="!isMailClicked" class="panel-body">
+               <table id="HTMLtoPDF"  data-toggle="table" class="table table-bordered table-striped table-hover" >
+                  <thead>
+                     <tr class="row-name">
+                        <th>Drug Name</th>
+                        <th>Unit Type</th>
+                        <th>Drug Category</th>
+                        <th>Drug Price</th>
+                        <th>Drug Quantity</th>
+                        <th id="sendMail">Send Mail</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="X in stockTable | filter:searchBox">
+                        <td>{{X.drugName}}</td>
+                        <td>{{X.drugType}}</td>
+                        <td>{{X.drugCategory}}</td>
+                        <td>{{X.drugPrice}}</td>
+                        <td ng-if="X.reorderAlert == 'danger'" style="color:red;"  >{{X.drugQuantity}}</td>
+                        <td ng-if="X.reorderAlert == 'reorder'" style="color:orange;"  >{{X.drugQuantity}}</td>
+                        <td ng-if="X.reorderAlert != 'danger' && X.reorderAlert != 'reorder'" >{{X.drugQuantity}}</td>
+                        <td  id="reorder" ng-click="sendOrderMail(X)" ng-if="X.reorderAlert == 'reorder'"><a type="submit" name="reorder"  class="btn btn-warning btn-xs"    value="15">Place Order </a></td>
+                        <td id="danger" ng-click="sendOrderMail(X)"  ng-if="X.reorderAlert == 'danger'"><a type="submit" name="danger"  class="btn btn-danger btn-xs"   value="15">Place Order </a></td>
+                        <td id="default" ng-click="sendOrderMail(X)" ng-if="X.reorderAlert != 'danger' && X.reorderAlert != 'reorder'"><a type="submit" name="default"    class="btn btn-primary btn-xs" value="15">Place Order </a></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div   ng-show="isMailClicked" class="panel-body">
+               
+               <form enctype="text/plain" method="post"  action="mailto:sameeradelpechithra@gmail.com" >
+                  <table class="table table-hover" style="width:100%">
+                     <tr>
+                        <td>From :</td>
+                        <td style="margin-left: 12px"><input  type="text" name="from" id="from" value="chamindu.cta@gmail.com" class="form-control" readonly  style="width:830px " /></td>
+                     </tr>
+                     <tr>
+                        <td>To:</td>
+                        <td style="margin-left: 12px"><input  type="text" name="to" id="to" class="form-control" readonly value="stock@pharmacy.com" style="width:830px " /></td>
+                     </tr>
+                     <tr>
+                        <td>Subject:</td>
+                        <td style="margin-left: 12px"><input  type="text" name="subject" class="form-control" readonly  id="subject" value="Drug Reorder Request For  {{mailDrugName}}" style="width:830px "</td>
+                     </tr>
+                     <tr>
+                        <td>Content:</td>
+                        <td style="margin-left: 12px"><textarea name="cont" class="form-control"   id="cont" rows="15" cols="70">
+Dear Officer,
+The Quantities of the below Drugs are Low.
+Name     : {{mailDrugName}}
+Catagary : {{mailDrugCategory}}
+Price(Rs)    :{{mailDrugPrice}}
+Quantity in Hand :{{mailDrugQuantity}}
+Please be kind enough to send us new stocks
+Best Regards,
+Chief Pharmasist
+                           </textarea>
+                        </td>
+                     </tr>
+                  </table>
+                  <div align="left" style="margin-left: 100px">
+                     <input type="submit"  class="btn btn-primary" ng-click="sendEmailOrder()" align="left"/>
+                     <input style="margin-left: 10px" type="button" value="Cancel"  class="btn btn-warning" ng-click="isMailClicked = false" align="left"/>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <button  ng-show="!isMailClicked"   id="pdfConverter" onclick="HTMLtoPDF()" style=" margin-left: 16px" type="button" class="btn btn-success btn-md" value="VIEW AS PDF"> VIEW AS PDF</button>
+   </div>
+</div>
+<!--/.row-->
+</div>  <!--/.main-->

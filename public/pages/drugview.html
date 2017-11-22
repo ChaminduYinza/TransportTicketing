@@ -1,0 +1,58 @@
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active"> Drugs</li>
+			</ol>
+		</div><!--/.row-->
+		
+	<!-- 	<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Drugs</h1>
+			</div>
+		</div> --><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+				  <div class="panel-heading">Drugs information</div>
+					<div class="panel-body">
+						<table data-toggle="table" class="table table-bordered" >
+						    <thead>
+						    <tr>
+						        <!-- <th data-field="id" data-align="right">Drug id</th> -->
+						        <th data-field="name">Drug Name</th>
+						        <th data-field="price">Drug Price</th>
+						        <th style="width:30px">Danger Level</th>
+						        <th data-field="price">Reorder Level</th>
+						        <th data-field="price">Dosage</th>
+						        <th data-field="price">Frequency</th>
+						        <th data-field="price">Remarks</th>
+						        <th data-field="price">Action</th>
+						    </tr>
+						    <tbody>
+						    	<tr ng-repeat="X in myDrug">
+						    		<!-- <td>{{X._id}}</td> -->
+						    		<td>{{X.drugName}}</td>
+						    		<td><input type="" value="{{X.drugPrice}}" name="" id="{{X._id}}"></td>
+						    		<td><input type="" value="{{X.dangerLevel}}" name="" style="width:60px;"></td>
+						    		<td><input type="" value="{{X.reorderLevel}}" name=""></td>
+						    		<td>{{X.dosage}}</td>
+						    		<td>{{X.frequency}}</td>
+						    		<td><input type="" value="{{X.remarks}}" name=""></td>
+						    		<td><button class="btn btn-warning btn-xs" ng-click="updateDrug(X)">Edit</button>
+						    			<!-- <button class="btn btn-danger btn-xs">Delete</button> -->
+						    		</td>
+						    	</tr>
+						    </tbody>
+						    </thead>
+						</table>
+         			</div>
+      				</div>
+         	 </div>
+     	 </div>
+
+			</div>
+		</div><!--/.row-->
+	</div>	<!--/.main-->

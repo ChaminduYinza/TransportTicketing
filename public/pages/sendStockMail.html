@@ -1,0 +1,74 @@
+<script src="./js/jspdf.js"></script>
+<script src="./js/pdfFromHTML.js"></script>
+<script src="./js/html2canvas.js"></script>
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" >
+   <div class="row">
+      <ol class="breadcrumb">
+         <li>
+            <a href="#">
+               <svg class="glyph stroked home">
+                  <use xlink:href="#stroked-home"></use>
+               </svg>
+            </a>
+         </li>
+         <li class="active"> SEND EMAIL</li>
+      </ol>
+   </div>
+  
+   
+   <div ng-controller="stockController" class="row" >
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div class="panel-heading">Send order e-mail</div>
+            <div id="HTMLtoPDF"  class="panel-body">
+              
+               <table data-toggle="table" class="table table-bordered table-striped table-hover" >
+               <thead>
+                  <tr>         
+                  <form action='http://his.sliit.lk/Pharmacy/index.php/Report_Controller/sendRequestMail' method='post'>
+                     <table class="table table-hover" style="width:100%">
+                        <tr>
+                           <td>From :</td>
+                           <td style="margin-left: 12px"><input  type="text" name="from" id="from" value="ehealthpharmacy111@gmail.com" class="form-control" readonly  style="width:830px " /></td>
+                        </tr>
+                        <tr>
+                           <td>To:</td>
+                           <td style="margin-left: 12px"><input  type="text" name="to" id="to" class="form-control" readonly value="shamith1991@gmail.com" style="width:830px " /></td>
+                        </tr>
+                        <tr>
+                           <td>Subject:</td>
+                           <td style="margin-left: 12px"><input  type="text" name="subject" class="form-control" readonly  id="subject" value="Drug Reorder Request For  Afrin Test" style="width:830px "</td>
+                        </tr>
+                        <tr>
+                           <td>Content: {{mailDrugCategory}}
+ </td>
+                           <td style="margin-left: 5px"><textarea name="cont" class="form-control"   id="cont" rows="15" cols="70">
+Dear Officer,
+The Quantities of the below Drugs are Low.
+Name     : Afrin Test
+Catagary :Drugs used in the treatment of Cardiovascular system
+Price(Rs)    :3.01
+Quantity in Hand :0
+Please be kind enough to send us new stocks
+Best Regards,
+Chief Pharmasist
+
+
+
+                              </textarea>
+
+                           </td>
+                        </tr>
+                     </table>
+                     <div align="left" style="margin-left: 75px">
+                        <input type="submit" name="submitpdf" class="btn btn-primary" value="SEND" align="left"/>
+                        <input type="hidden" name="id" id="id" value="38"/>
+                     </div>
+                  </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--/.row-->
+</div>	<!--/.main-->

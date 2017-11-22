@@ -1,0 +1,56 @@
+{
+	"drugId":"D-003",
+	"drugCategory":"Paracitamol",
+	"drugName":"Panadol",
+	"drugType":"Tabs",
+	"drugPrice":"5",
+	"remarks":"none",
+	"dangerLevel":"100",
+	"reorderLevel":"100",
+	"dosage":"1",
+	"frequency":"5 times  per day",
+	"addedDate":"2017-04-05"
+	
+	
+	
+}
+
+{
+	"drugCategory":"Asprin",
+
+	"quantity":"50000",
+
+	"addedDate":"2017/04/01"
+	
+	
+
+}
+
+
+{
+	"batchNumber":"DC-02",
+	
+        "quantity":"1000",
+	
+        "addedDate":"2017/04/01"
+	
+	
+
+}
+
+{
+	"batchNumber":"DC-04",
+	
+    	 "drugId":"D-003",
+	
+        "quantity":"2014/02/01",
+
+        "manufacturerDate":"2014/04/01",
+
+        "exprieDate":"2018/04/01",
+	
+        "addedDate":"2017/04/01"
+	
+	
+
+}

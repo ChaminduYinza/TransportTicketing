@@ -1,0 +1,164 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <svg class="glyph stroked home">
+                        <use xlink:href="#stroked-home"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="active">Add Prescription</li>
+        </ol>
+    </div>
+    <style type="text/css">
+        tr.row-name {
+            font-size: 15px;
+            color: #448aff;
+            text-transform: uppercase;
+        }
+    </style>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Prescription</div>
+                <div class="panel-body">
+                    <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+                    <form class="form-horizontal" name="AddPress">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Prescription ID : </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="pressId" name="pressId" disabled="true" data-ng-model="press.PrescriptionID">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Patient Name :</label>
+                            <div class="col-md-6">
+                                <select class="form-control" required data-error="Select a Patient!" tabindex="1" ng-options="x.PatientName as x.PatientName for x in Patient" data-ng-model="press.PatientName">
+                                    <option style="display:none" value="">Select a Patient</option>
+                                    <!-- <option data-ng-model="press.PatientName" ng-repeat="P in Patient">{{P.PatientName}}</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Doctor Name :</label>
+                            <div class="col-md-6">
+                                <select class="form-control" required data-error="Select a Doctor!" tabindex="1" ng-options="x.DoctorName as x.DoctorName for x in Doctor" data-ng-model="press.DoctorName">
+                                    <option style="display:none" value="">Select a Doctor</option>
+                                    <!-- <option data-ng-model="press.DoctorName" ng-repeat="D in Doctor">{{D.DoctorName}}</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Prescription Date :</label>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" id="date" name="pdate" ng-model="press.PrescriptionDate" required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Age :</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="dPrice" name="dPrice" placeholder="Enter Age" ng-model="press.Age" required pattern="\d*" title="Numbers only">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Reason :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="reason" name="reason" placeholder="Reason for Illness" ng-model="press.Reason" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="col-md-4">
+                                <button name="nxtbtn" ng-click="next=true; addPrescription(press)" class="btn btn-success" ng-disabled="AddPress.$invalid" >Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="next">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Prescription</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" name="addPressDrugs">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Drug Name:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" required data-error="Select a Drug!" tabindex="1" ng-options="x.drugName as x.drugName for x in pressDrugs" data-ng-model="pressD.drugName">
+                                    <option style="display:none" value="">Select a Drug</option>
+                                    <!-- <option ng-model="pressD.DrugName" ng-repeat="D in pressDrugs">{{D.DrugName}}</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Quantity :</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" ng-model="pressD.Quantity" required pattern="\d*" title="Numbers only">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Dosage :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="dosage" name="dosage" placeholder="Drug Dosage" ng-model="pressD.Dosage" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Schedule :</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="schedule" name="schedule" placeholder="Drug Schedule" ng-model="pressD.Schedule" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="col-md-4">
+                                <button name="addsubmitbtn" ng-click="addDrugToPrescription(pressD);" class="btn btn-warning" ng-disabled="addPressDrugs.$invalid">Add</button>
+                                <a name="submitbtn" ng-click="next=false; successMsg()" class="btn btn-success">Finish</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="drugs">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Added Drugs</div>
+                <div class="panel-body">
+                    <!-- <h1 class="page-header">Add Drugs Manualy</h1> -->
+                    <table data-toggle="table" class="table table-bordered table-striped table-hover">
+                        <thead >
+                           <tr class="row-name">
+                              <th>Dispense ID</th>
+                              <th>Prescription ID</th>
+                              <th>Drug Name</th>
+                              <th>Quantity</th>
+                              <th>Dosage</th>
+                              <th>Schedule</th>
+                              <th>Edit</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr ng-repeat="press in Pres">
+                              <td>{{press.DispenseDrugID}}</td>
+                              <td>{{press.PrescriptionID}}</td>  
+                              <td>{{press.DrugName}}</td>
+                              <td>{{press.Quantity}}</td>
+                              <td>{{press.Dosage}}</td>
+                              <td>{{press.Schedule}}</td>
+                                <td style="text-align: center" class="col-md-2"><a class="btn btn-success btn-xs" ng-model="save" ng-show="save" ng-click="save=false">Save</a>
+                                    <a class="btn btn-warning btn-xs" ng-model="edit" ng-hide="save" ng-click="save=true">Edit</a>
+                                    <a class="btn btn-warning btn-xs" ng-model="cancel" ng-show="save" ng-click="save=false">Cancel</a>
+                                    <a class="btn btn-danger btn-xs" ng-model="delete" ng-click="removePressDrug(press)" ng-show="save">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
