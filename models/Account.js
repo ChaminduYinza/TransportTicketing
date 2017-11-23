@@ -28,11 +28,7 @@ Account.find(callback).limit(limit);
 
 }
 
- module.exports.validateLogin = function(email,callback){
 
-  Account.find({email: email},callback);
-
- }
 
 // //Add Stock
 module.exports.addAccount = function(acc,callback){
@@ -43,6 +39,26 @@ Account.create(acc,callback);
 module.exports.getLastAccountNumber = function (callback) {
     Account.find(callback).sort({$natural:-1}).limit(1);
 }
+
+
+ module.exports.identifyAccount = function(account_no,callback){
+
+  Account.find({account_no: account_no},callback);
+
+ }
+
+
+ //Update account
+module.exports.addCredit = function(accountNumber,amount,options,callback){
+var query = {account_no: accountNumber}	
+var update = {
+	credit_amount: amount
+}
+Account.findOneAndUpdate(query,update,options,callback);
+
+}
+
+
 
 
 // //Update Stock

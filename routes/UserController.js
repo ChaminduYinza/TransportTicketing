@@ -5,7 +5,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var modelUser = require('../models/User');
 var modelAccount = require('../models/Account');
-
+var modelToken = require('../models/Token');
 
 
 router.use(bodyParser.json());
@@ -25,6 +25,8 @@ router.get('/api/user', function(req, res) {
     });
 });
 
+
+//-------------------------------------------------------------------LOGIN VALIDATION ----------------------------
 
 router.post('/api/user/login', function(req, res) {
     var credentials = req.body;
@@ -61,6 +63,9 @@ router.post('/api/user', function(req, res) {
     var user = req.body;
     var newAccountNo;
     var lastId = 0;
+    var lastTokenId = 0;
+    var lastBarCode = 0;
+    var lastQrCode = 0;
     var createdUser;
 
     modelUser.getLastPID(function(err, lastPID) {
@@ -100,9 +105,6 @@ router.post('/api/user', function(req, res) {
 
     }
 
-
-
-
     function getLastAccountNumber() {
 
         modelAccount.getLastAccountNumber(function(err, lastAccountNumber) {
@@ -139,7 +141,8 @@ router.post('/api/user', function(req, res) {
                 });
                 return;
             } else {
-                res.json(account);
+                getLastTokenNumber();
+                //   res.json(account);
 
             }
 
@@ -148,10 +151,85 @@ router.post('/api/user', function(req, res) {
     }
 
 
+    function getLastTokenNumber() {
+
+        modelToken.getLastTokenNumber(function(err, lastToken) {
+            if (err) {
+                res.json({
+                    success: false,
+                    msg: 'Get request Fail by route!!'
+                });
+                return;
+            } else {
+
+                if (lastToken.length > 0 && lastToken[0].token_no != 0) {
+                    lastTokenId = lastToken[0].token_no.split("T")[1];
+                    lastTokenId = "T" + (parseInt(lastTokenId) + 1);
+                } else {
+                    lastTokenId = "T1";
+                }
+
+                if (lastToken.length > 0 && lastToken[0].qr_code != 0) {
+                    lastQrCode = lastToken[0].qr_code.split("Q")[1];
+                    lastQrCode = "Q" + (parseInt(lastQrCode) + 3);
+                } else {
+                    lastQrCode = "Q1001001";
+                }
+
+                if (lastToken.length > 0 && lastToken[0].bar_code != 0) {
+                    lastBarCode = lastToken[0].bar_code.split("B")[1];
+                    lastBarCode = "B" + (parseInt(lastBarCode) + 3);
+                } else {
+                    lastBarCode = "B1001001";
+                }
+
+
+
+            }
+            addToken();
+        });
+
+    }
+
+    function addToken() {
+
+        var tokenJSON = {
+            "account_no": newAccountNo,
+            "token_no": lastTokenId,
+            "bar_code": lastBarCode,
+            "qr_code": lastQrCode
+        };
+        console.log(tokenJSON)
+
+
+        modelToken.addToken(tokenJSON, function(err, token) {
+            if (err) {
+
+                res.json({
+                    success: false,
+                    msg: 'Post request Fail by route!!'
+                });
+                return;
+            } else {
+
+                res.json(token);
+
+            }
+
+        });
+
+
+    }
+
+
+
+
 });
 
 
 
+
+//--------------------------------------------------------------GET Last Record ID+1----------------------------
 
 
 
