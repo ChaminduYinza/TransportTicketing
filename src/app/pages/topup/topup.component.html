@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center" style="color: rgb(255, 255, 255)">
+        PLEASE TAP YOUR CARD OR SCAN QR CODE TO LOGIN
+      </h1>
+    </div>
+    <div class="col-md-12">.</div>
+  </div>
+  <div class="row animated bounceIn">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170)">
+        <a class="card clickable ripple" (click)="identifyToken()">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                TAP RFID
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <clr-icon shape="wifi" class="is-solid" size="200"></clr-icon>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170)">
+        <a class="card clickable ripple" (click)="identifyToken()">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                SCAN QR
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <span class="glyphicon glyphicon-qrcode" style="font-size:140px; padding:30px;"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center; background-color: rgb(255, 255, 255); opacity: 0.7">
+      <div class="form-group">
+        <input type="text" id="formFields_9" [(ngModel)]="card" placeholder="Enter your code here" size="25" style="text-align: center; height: 50px; font-size: 32px;">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- Add credit by cash-->
+<div class="container-fluid">
+  <div class="row">
+      <button type="button" class="btn btn-icon btn-primary"  (click)="back()">
+          <clr-icon shape="rewind"></clr-icon> Back and Logout
+      </button>
+    <div class="col-md-12">
+      <h1 class="text-center" style="color: rgb(255, 255, 255)">
+        ACCOUNT BALANCE
+      </h1>
+    </div>
+    <div class="col-md-12"></div>
+  </div>
+  <div class="row  animated bounceIn">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170)">
+        <a class="card clickable ripple">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                YOUR ACCOUNT BALANCE IS
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <p style="font-size: 85px; padding: 30px;">
+            Rs.{{accBalance}}
+          </p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+Add credit by card
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center" style="color: rgb(255, 255, 255)">
+        ADD CREDIT BY CARD
+      </h1>
+    </div>
+    <div class="col-md-12">.</div>
+  </div>
+  <div class="row  animated bounceIn">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170)">
+        <div class="card">
+          <div class="container">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="padding-top: 30px; padding-bottom: 30px">
+              <fieldset>
+                <legend>Payment</legend>
+
+                <div class="control-group">
+                  <label class="control-label">Amount</label>
+                  <div class="controls">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <input type="number" class="form-control" autocomplete="off" required [(ngModel)]="amount" >
+                      </div>
+                      <div class="col-md-8"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Card Holder's Name</label>
+                  <div class="controls">
+                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="First and last name" required [(ngModel)]="name">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Card Number</label>
+                  <div class="controls">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <input type="number" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required [(ngModel)]="card1">
+                      </div>
+                      <div class="col-md-3">
+                        <input type="number" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required [(ngModel)]="card2">
+                      </div>
+                      <div class="col-md-3">
+                        <input type="number" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required [(ngModel)]="card3">
+                      </div>
+                      <div class="col-md-3">
+                        <input type="number" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required [(ngModel)]="card4">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Card Expiry Date</label>
+                  <div class="controls">
+                    <div class="row">
+                      <div class="col-md-7">
+                        <select class="form-control" name="cc_exp_mo">
+                          <option value="01">January</option>
+                          <option value="02">February</option>
+                          <option value="03">March</option>
+                          <option value="04">April</option>
+                          <option value="05">May</option>
+                          <option value="06">June</option>
+                          <option value="07">July</option>
+                          <option value="08">August</option>
+                          <option value="09">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                      </div>
+                      <div class="col-md-5">
+                        <select class="form-control" name="cc_exp_yr">
+                          <option>2014</option>
+                          <option>2015</option>
+                          <option>2016</option>
+                          <option>2017</option>
+                          <option>2018</option>
+                          <option>2019</option>
+                          <option>2020</option>
+                          <option>2021</option>
+                          <option>2022</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Card CVV</label>
+                  <div class="controls">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card"
+                          required [(ngModel)]="cvv">
+                      </div>
+                      <div class="col-md-8"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label"></label>
+                  <div class="controls">
+                    <button type="submit" class="btn btn-primary" (click)="updateAmount(amount)">Submit</button>
+                    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

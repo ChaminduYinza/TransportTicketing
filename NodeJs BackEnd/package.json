@@ -1,0 +1,44 @@
+{
+  "name": "transport",
+  "version": "1.0.0",
+  "description": "Pharmacy System API",
+  "main": "server.js",
+  "scripts": {
+    "start": "SET NODE_ENV=dev && node server.js",
+    "test": "mocha --timeout 10000"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "*",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "chai-json": "^0.1.1",
+    "cors": "^2.8.3",
+    "express": "*",
+    "express-session": "^1.15.2",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "*",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "request": "^2.83.0",
+    "supertest": "^3.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^2.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaminduYinza/TransportTicketing.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ChaminduYinza/TransportTicketing/issues"
+  },
+  "homepage": "https://github.com/ChaminduYinza/TransportTicketing#readme"
+}

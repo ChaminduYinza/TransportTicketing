@@ -1,0 +1,47 @@
+<!-- add credits and view balance after logged in -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center" style="color: rgb(255, 255, 255)">
+        SELECT TRANSACTION OPTION
+      </h1>
+    </div>
+    <div class="col-md-12">.</div>
+  </div>
+  <div class="row  animated bounceIn">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170);">
+        <a class="card clickable ripple" (click)="addCredit()" style="margin-top: 0rem;">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                ADD CREDITS
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <clr-icon shape="dollar" size="100"></clr-icon>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170);">
+        <a class="card clickable ripple" (click)="balance()" style="margin-top: 0rem;">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                BALANCE
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <clr-icon shape="dollar-bill" size="100"></clr-icon>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

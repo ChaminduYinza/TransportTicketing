@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row animated bounceIn">
+        <div class="col-md-6">
+            <div class="jumbotron" style="padding-bottom: 95px;">
+              <h4 style="font-weight:bold;">Income Report</h4>
+                <div style="display: block">
+                <canvas baseChart width="400" height="300"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+              </canvas>
+              </div>
+              </div>
+        </div>
+        <div class="col-md-6">
+            <div class="jumbotron">
+              <h4 style="font-weight:bold;">Monthly Income Report</h4>
+              <div style="display: block">
+                  <canvas baseChart width="400" height="300"
+                          [data]="pieChartData"
+                          [labels]="pieChartLabels"
+                          [chartType]="pieChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+
+                          <small style="font-weight:bold">Total Cash Rs :{{paymentTypeChart[0].CASH}}</small><br>
+                          <small style="font-weight:bold">Total Card Rs :{{paymentTypeChart[0].CARD}}</small>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="row  animated bounceIn">
+          <div class="col-md-12">
+            <div class="jumbotron">
+                <div style="display: block">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)"></canvas>
+                  </div>
+            </div>
+          </div>
+        </div>
+
+
+</div>

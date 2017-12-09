@@ -1,0 +1,21 @@
+<div class="main-container" style="float:left; min-height:1200px;">
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
+        
+        <a clrVerticalNavLink routerLink="./passenger" routerLinkActive="active">
+            <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+            Passenger
+        </a>
+        <a clrVerticalNavLink routerLink="./staff" routerLinkActive="active">
+            <clr-icon clrVerticalNavIcon shape="organization"></clr-icon>
+            Staff
+        </a>
+        <!-- <a clrVerticalNavLink routerLink="./busses" routerLinkActive="active">
+            <clr-icon clrVerticalNavIcon shape="car"></clr-icon>
+            Busses
+        </a> -->
+        <a clrVerticalNavLink routerLink="./staticstics" routerLinkActive="active">
+            <clr-icon clrVerticalNavIcon shape="bar-chart"></clr-icon>
+            Statistic Report
+        </a>
+    </clr-vertical-nav>
+</div>

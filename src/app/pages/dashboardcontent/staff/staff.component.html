@@ -1,0 +1,41 @@
+<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+<div class="container-fluid">
+    <div class="row  animated bounceIn">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <h2>All users</h2>
+            
+            <table class="table" id="exportthis">
+              <thead>
+                <tr>
+                  <th>PID</th>
+                  <th>Name</th>
+                  <!-- <th>Address</th> -->
+                  <th>Dob</th>
+                  <th>Email</th>
+                  <th>Phone no</th>
+                  <th>Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of   userDataJson">
+                  <td>{{x.PID}}</td>
+                  <td>{{x.name}}</td>
+                  <!-- <td>No :{{x.address.no}} " street: "{{x.address.street}} "city: "{{x.address.city}}</td> -->
+                  <td>{{x.dob|date: 'y-m-d'}}</td>
+                  <td>{{x.email}}</td>
+                  <td>{{x.phoneNo}}</td>
+                  <td>{{x.role}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <a type="button" href="#" (click)="tableToExcel(daa,'Users Report')" class="btn btn-primary"> Excel </a>
+            <!-- <button (click)="pdfmake.open()" class="btn btn-warning">PDF</button> -->
+            <!-- <button class="btn btn-primary">Export to csv</button> -->
+          </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,68 @@
+http://localhost:4000/api/user
+
+ [{
+        "password": "newPassword",
+        "dob": "1994-12-29",
+        "name":"Chamindu Thiranjaya",
+        "address": {
+            "no":"1",
+            "street":"Colombo",
+            "city":"Piliyandala"
+        },
+        "phoneNo": "0112603324",
+        "email": "chnamindu@my.com",
+        "user_type":"Passenger"
+        
+    }]
+
+
+http://localhost:4000/api/route
+
+
+[
+    {
+       "start_point":"Horana",
+       "end_point":"Petah",
+       "bus_route":"120"
+    }
+]
+
+[
+    {
+       "start_point":"Kesbewa",
+       "end_point":"Petah",
+       "bus_route":"120"
+    }
+]
+
+[
+    {
+       "start_point":"Kottawa",
+       "end_point":"Petah",
+       "bus_route":"138"
+    }
+]
+
+[
+    {
+       "start_point":"Piliyandala",
+       "end_point":"Kahapola",
+       "bus_route":"138"
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

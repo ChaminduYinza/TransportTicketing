@@ -1,0 +1,50 @@
+<!-- add credits select payment method -->
+<div class="container-fluid">
+  <div class="row">
+      <button type="button" class="btn btn-icon btn-primary"  (click)="back()">
+          <clr-icon shape="rewind"></clr-icon> Back and Logout
+      </button>
+    <div class="col-md-12">
+      <h1 class="text-center" style="color: rgb(255, 255, 255)">
+        PLEASE SELECT PAYMENT METHOD
+      </h1>
+    </div>
+    <div class="col-md-12">.</div>
+  </div>
+  <div class="row  animated bounceIn">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170);">
+        <a class="card clickable ripple" (click)="card()" style="margin-top: 0rem;">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                CARD
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <clr-icon shape="credit-card" size="100"></clr-icon>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170);">
+        <a class="card clickable ripple" (click)="cash()" style="margin-top: 0rem;">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                CASH
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <clr-icon shape="dollar-bill" size="100"></clr-icon>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

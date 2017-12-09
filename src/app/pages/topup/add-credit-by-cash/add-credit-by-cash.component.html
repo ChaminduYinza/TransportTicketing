@@ -1,0 +1,41 @@
+<!-- Add credit by cash-->
+<div class="container-fluid">
+  <div class="row">
+      <button type="button" class="btn btn-icon btn-primary"  (click)="back()">
+          <clr-icon shape="rewind"></clr-icon> Back
+      </button>
+    <div class="col-md-12">
+      <h1 class="text-center" style="color: rgb(255, 255, 255)">
+        ADD CREDIT BY CASH
+      </h1>
+    </div>
+    <div class="col-md-12"></div>
+  </div>
+  <div class="row  animated bounceIn">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="jumbotron" style="background-color: rgb(170, 170, 170)">
+        <a class="card clickable ripple">
+          <div class="card-block">
+            <div class="text-center">
+              <h2>
+                ADD CASH TO THE MACHINE
+              </h2>
+            </div>
+          </div>
+          <div class="card-img text-center">
+            <clr-icon shape="dollar" size="80"></clr-icon>
+            <div class="form-group">
+                <input type="text" id="formFields_9" [(ngModel)]="amount" placeholder="Enter your amount here" size="25" style="text-align: center; height: 50px; font-size: 32px;">
+                <div class="controls" style="padding-top: 20px;">
+                    <button type="submit" class="btn btn-primary" (click)="updateAmount(amount)">Submit</button>
+                    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+                  </div>
+              </div>
+          </div>
+        </a>
+      </div>
+    </div> 
+    <div class="col-md-1"></div>
+  </div>
+</div>
